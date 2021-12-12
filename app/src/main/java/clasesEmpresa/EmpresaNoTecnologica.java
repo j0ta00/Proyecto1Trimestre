@@ -1,5 +1,7 @@
 package clasesEmpresa;
 
+import android.os.Parcelable;
+
 public class EmpresaNoTecnologica extends Empresa{
     //Atributos
     private String codigoCNAE;

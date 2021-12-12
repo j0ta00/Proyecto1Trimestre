@@ -1,5 +1,7 @@
 package clasesEmpresa;
 
+import android.os.Parcelable;
+
 public abstract class Empresa{
     //Atributos
     private int idLogo;
@@ -10,6 +12,7 @@ public abstract class Empresa{
         this.idLogo = idLogo;
         this.nombreEmpresa = nombreEmpresa;
     }
+    protected Empresa(){}
 
     //Getters&Setters
     public int getIdLogo() {

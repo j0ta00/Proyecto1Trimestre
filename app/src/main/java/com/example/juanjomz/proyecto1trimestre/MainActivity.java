@@ -4,13 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
@@ -27,12 +28,13 @@ import claseLocalizacion.Localizacion;
 import clasesEmpresa.Empresa;
 import clasesEmpresa.EmpresaNoTecnologica;
 import clasesEmpresa.EmpresaTecnologica;
+import detallesEmpresa.DetallesEmpresa;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     private List<Empresa> listaEmpresas;
     private ListView lvEmpresas;
-
+    IconAdapter<Empresa> myAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,18 +42,32 @@ public class MainActivity extends AppCompatActivity {
         llenarListaEmpresas();
         lvEmpresas=findViewById(R.id.lvEmpresas);
         AutoCompleteTextView autoComplete=findViewById(R.id.actvEmpresas);
-        IconAdapter<Empresa> myAdapter=new IconAdapter<>(this,listaEmpresas);
+        myAdapter=new IconAdapter<>(this,listaEmpresas);
         autoComplete.setAdapter(myAdapter);
         lvEmpresas.setAdapter(myAdapter);
         autoComplete.addTextChangedListener(new MyTextWatcher(myAdapter));
+        lvEmpresas.setOnItemClickListener(this);
     }
 
     private void llenarListaEmpresas(){
         listaEmpresas=new LinkedList<>();
         listaEmpresas.add(new EmpresaTecnologica(R.drawable.deloitte_logo,"Deloitte","https://www2.deloitte.com/es/es.html",
-                new Localizacion("C/ Gonzalo Jimenez de Quesada, 2, 41092 Sevilla",Uri.parse("geo:37.39164871013399, -6.010424402772642")),"adminfinanciera@deloitte.es"));
+                new Localizacion("C/ Gonzalo Jimenez de Quesada, 2, 41092 Sevilla",Uri.parse("geo:37.39164871013399, -6.010424402772642")),"adminfinanciera@deloitte.es","954 48 93 00"));
         listaEmpresas.add(new EmpresaNoTecnologica(R.drawable.azvi_logo,"Azvi","F-4212"));
     }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Empresa empresa=(Empresa)myAdapter.getItem(i);
+        Intent intent;
+        if(empresa instanceof EmpresaTecnologica){
+            intent=new Intent(getBaseContext(), DetallesEmpresa.class);
+            intent.setAction(Intent.ACTION_SEND);
+            intent.putExtra("Empresa",(EmpresaTecnologica)empresa);
+            startActivity(intent);
+        }
+    }
+
 
     public class IconAdapter<T> extends BaseAdapter implements Filterable {
         Context context;

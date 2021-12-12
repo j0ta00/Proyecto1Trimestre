@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto1Trimestre">
         <activity
+            android:name="personasDeContacto.PersonasDeContacto"
+            android:exported="true" />
+        <activity
+            android:name="detallesEmpresa.DetallesEmpresa"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
