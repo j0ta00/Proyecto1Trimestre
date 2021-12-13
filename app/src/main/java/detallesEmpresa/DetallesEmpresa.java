@@ -50,6 +50,7 @@ public class DetallesEmpresa extends AppCompatActivity implements AdapterView.On
         vmDetalles.getEmpresa().observe(this,this::onCompanyChangued);
         webEmpresa.setOnClickListener(this);
         inicializarDatosEmpresa();
+        btnPersonasDeContacto.setOnClickListener(this);
         btnGuardar.setOnClickListener(this);
         btnUbicacion.setOnClickListener(this);
         correoEmpresa.setOnClickListener(this);

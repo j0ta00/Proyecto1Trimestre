@@ -4,16 +4,24 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Persona{
+    private int idFoto;
     private String nombre;
     private String apellidos;
-    private LocalDateTime fechaNacimiento;
     private String numeroTelefono;
 
-    public Persona(String nombre, String apellidos, LocalDateTime  fechaNacimiento, String numeroTelefono) {
+    public Persona(int idFoto,String nombre, String apellidos, String numeroTelefono) {
+        this.idFoto=idFoto;
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.fechaNacimiento = fechaNacimiento;
         this.numeroTelefono = numeroTelefono;
+    }
+
+    public int getIdFoto() {
+        return idFoto;
+    }
+
+    public void setIdFoto(int idFoto) {
+        this.idFoto = idFoto;
     }
 
     public String getNombre() {
@@ -30,14 +38,6 @@ public class Persona{
 
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
-    }
-
-    public LocalDateTime  getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(LocalDateTime  fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getNumeroTelefono() {

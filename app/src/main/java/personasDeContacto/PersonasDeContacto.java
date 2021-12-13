@@ -7,8 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.juanjomz.proyecto1trimestre.R;
 
@@ -21,23 +26,24 @@ import clasePersona.Persona;
 public class PersonasDeContacto extends AppCompatActivity {
 
     private List<Persona> empleados;
+    private Spinner spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personas_de_contacto);
+        llenarLista();
+        spinner=findViewById(R.id.spnPersonasDeContacto);
+        spinner.setAdapter(new spinnerAdapter(this,empleados));
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     private void llenarLista(){
         empleados=new LinkedList<Persona>();
-        empleados.add(new Persona("Juan José","Muñoz Arenas",
-        LocalDateTime.of(2000,6,7,00,00),"6634243418"));
-        empleados.add(new Persona("Antoine","Lebrija Sevilla",
-                LocalDateTime.of(2000,6,7,00,00),"6634243418"));
-        empleados.add(new Persona("Luis","Molinas Martínez",
-                LocalDateTime.of(2000,6,7,00,00),"6634243418"));
-        empleados.add(new Persona("María","",
-                LocalDateTime.of(2000,6,7,00,00),"6634243418"));
+        empleados.add(new Persona(R.drawable.juanjo,"Juan José ","Muñoz Arenas", "6634243418"));
+        empleados.add(new Persona(R.drawable.antonio,"Antonio ","Lopez Caballero", "6634243418"));
+        empleados.add(new Persona(R.drawable.luis,"Luis ","Molinas Martínez", "6634243418"));
+        empleados.add(new Persona(R.drawable.maria,"María ","Barroso Núñez", "6634243418"));
 
     }
     public class spinnerAdapter extends BaseAdapter {
@@ -67,50 +73,61 @@ public class PersonasDeContacto extends AppCompatActivity {
         @Override
         public View getView(int i, View Convertview, ViewGroup parent) {
             ImageView img=null;
-            TextView txt=null;
+            TextView txtNombre=null,txtApellidos=null;
             ViewHolder holder=null;
             View vista=Convertview;
             LayoutInflater inflater =null;
             if(vista==null){
                 inflater = getLayoutInflater();
-                vista=inflater.inflate(R.layout.spinner_row,parent,false);
-                img=vista.findViewById(R.id.fotoEquipo);
-                txt=vista.findViewById(R.id.nombreEquipo);
-                holder=new Holder(img,txt);
+                vista=inflater.inflate(R.layout.layout_spinner,parent,false);
+                img=vista.findViewById(R.id.imgPersona);
+                txtNombre=vista.findViewById(R.id.nombrePersona);
+                txtApellidos=vista.findViewById(R.id.apellidosPersona);
+                holder=new ViewHolder(img,txtNombre,txtApellidos);
                 vista.setTag(holder);
             }else{
                 holder=(ViewHolder) vista.getTag();
             }
-            holder.getImgFotoEquipo().setImageResource(empleadosAdapter.get(i).getIdFoto());
-            holder.getTxtNombreEquipo().setText(empleadosAdapter.get(i).getNombre());
+            holder.getImgPersona().setImageResource(empleadosAdapter.get(i).getIdFoto());
+            holder.getTxtNombre().setText(empleadosAdapter.get(i).getNombre());
+            holder.getTxtApellidos().setText(empleadosAdapter.get(i).getApellidos());
             return vista;
         }
 
 
     }
     public class ViewHolder{
-        ImageView imgFotoEquipo;
-        TextView txtNombreEquipo;
+        ImageView imgPersona;
+        TextView txtNombre,txtApellidos;
 
-        public Holder(ImageView imgFotoEquipo, TextView txtNombreEquipo) {
-            this.imgFotoEquipo = imgFotoEquipo;
-            this.txtNombreEquipo = txtNombreEquipo;
+        public ViewHolder(ImageView imgPersona, TextView txtNombre, TextView txtApellidos) {
+            this.imgPersona = imgPersona;
+            this.txtNombre = txtNombre;
+            this.txtApellidos = txtApellidos;
         }
 
-        public ImageView getImgFotoEquipo() {
-            return imgFotoEquipo;
+        public ImageView getImgPersona() {
+            return imgPersona;
         }
 
-        public void setImgFotoEquipo(ImageView imgFotoEquipo) {
-            this.imgFotoEquipo = imgFotoEquipo;
+        public void setImgPersona(ImageView imgPersona) {
+            this.imgPersona = imgPersona;
         }
 
-        public TextView getTxtNombreEquipo() {
-            return txtNombreEquipo;
+        public TextView getTxtNombre() {
+            return txtNombre;
         }
 
-        public void setTxtNombreEquipo(TextView txtNombreEquipo) {
-            this.txtNombreEquipo = txtNombreEquipo;
+        public void setTxtNombre(TextView txtNombre) {
+            this.txtNombre = txtNombre;
+        }
+
+        public TextView getTxtApellidos() {
+            return txtApellidos;
+        }
+
+        public void setTxtApellidos(TextView txtApellidos) {
+            this.txtApellidos = txtApellidos;
         }
     }
 }
