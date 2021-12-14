@@ -1,148 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:overScrollMode="always"
+    android:isScrollContainer="true"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbarStyle="outsideInset">
 
-    <ImageView
-        android:id="@+id/imgLogoEmpresa"
-        android:layout_width="150dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginBottom="44dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvNombreEmpresa"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></ImageView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-33dp"
+        tools:layout_editor_absoluteY="1dp">
 
-    <TextView
-        android:id="@+id/tvNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="227dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/Nombre"
-        app:layout_constraintEnd_toStartOf="@id/tvNombreEmpresa"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imgLogoEmpresa"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></ImageView>
 
-    <TextView
-        android:id="@+id/tvNombreEmpresa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:text="Aquí irá el nombre"
-        app:layout_constraintBaseline_toBaselineOf="@id/tvNombre"
-        app:layout_constraintStart_toStartOf="@id/imgLogoEmpresa" />
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:layout_marginBottom="95dp"
+            android:text="Guardar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/tvWeb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Web"
-        app:layout_constraintBaseline_toBaselineOf="@id/tvWebEmpresa"
-        app:layout_constraintStart_toStartOf="@id/tvNombre" />
+        <Button
+            android:id="@+id/btnPersonasDeContacto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="27dp"
+            android:text="Personas de Contacto"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/tvWebEmpresa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:clickable="true"
-        android:text="Aquí irá la web"
-        app:layout_constraintStart_toEndOf="@id/tvWeb"
-        app:layout_constraintTop_toBottomOf="@id/tvNombreEmpresa" />
+        <TextView
+            android:id="@+id/tvNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:text="@string/Nombre"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvNombreEmpresa"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/tvEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="10dp"
-        android:text="@string/Email"
-        app:layout_constraintEnd_toStartOf="@id/tvEmailEmpresa"
-        app:layout_constraintTop_toBottomOf="@id/tvWeb" />
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="51dp"
+            android:text="@string/Email"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvEmailEmpresa"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/tvEmailEmpresa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:clickable="true"
-        android:text="Aquí irá el email"
-        app:layout_constraintBaseline_toBaselineOf="@id/tvEmail"
-        app:layout_constraintStart_toStartOf="@id/tvWebEmpresa" />
+        <EditText
+            android:id="@+id/edLocalizacionEmpresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:textSize="15dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvLocalizacion"
+            app:layout_constraintStart_toEndOf="@+id/tvLocalizacion" />
 
-    <TextView
-        android:id="@+id/tvLocalizacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="11dp"
-        android:text="@string/Direccion"
-        app:layout_constraintBottom_toBottomOf="@+id/btnLocalizacion"
-        app:layout_constraintEnd_toStartOf="@id/edLocalizacionEmpresa"
-        app:layout_constraintStart_toEndOf="@id/btnLocalizacion" />
+        <TextView
+            android:id="@+id/tvTelefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:text="@string/Telefono"
+            app:layout_constraintBaseline_toBaselineOf="@+id/edTelefonoEmpresa"
+            app:layout_constraintEnd_toEndOf="@+id/tvLocalizacionEmpresa" />
 
-    <EditText
-        android:id="@+id/edLocalizacionEmpresa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aquí irá la locaclizacion"
-        android:textSize="15dp"
-        app:layout_constraintBaseline_toBaselineOf="@id/tvLocalizacion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvLocalizacion" />
+        <ImageButton
+            android:id="@+id/btnLocalizacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="51dp"
+            android:layout_marginTop="36dp"
+            android:src="@drawable/ic_location_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmail"></ImageButton>
 
-    <ImageButton
-        android:id="@+id/btnLocalizacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_location_24"
-        app:layout_constraintEnd_toStartOf="@id/tvLocalizacion"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvEmail"></ImageButton>
+        <TextView
+            android:id="@+id/tvWeb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:text="@string/Web"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvWebEmpresa"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/tvTelefono"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="9dp"
-        android:text="@string/Telefono"
-        app:layout_constraintBaseline_toBaselineOf="@id/edTelefonoEmpresa"
-        app:layout_constraintEnd_toStartOf="@id/edTelefonoEmpresa" />
+        <EditText
+            android:id="@+id/edTelefonoEmpresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="13dp"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvTelefonoEmpresa"
+            app:layout_constraintStart_toEndOf="@+id/tvTelefono" />
 
-    <EditText
-        android:id="@+id/edTelefonoEmpresa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Aquí irá el telefono"
-        android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="@id/edLocalizacionEmpresa"
-        app:layout_constraintTop_toBottomOf="@id/edLocalizacionEmpresa" />
+        <TextView
+            android:id="@+id/tvLocalizacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/Direccion"
+            app:layout_constraintStart_toEndOf="@+id/btnLocalizacion"
+            app:layout_constraintTop_toTopOf="@+id/btnLocalizacion" />
 
-    <Button
-        android:id="@+id/btnPersonasDeContacto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="76dp"
-        android:text="Personas de Contacto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnGuardar" />
+        <TextView
+            android:id="@+id/tvNombreEmpresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="18dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvWebEmpresa"
+            app:layout_constraintStart_toEndOf="@+id/tvNombre" />
 
-    <Button
-        android:id="@+id/btnGuardar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Guardar"
-        app:layout_constraintStart_toStartOf="@id/btnPersonasDeContacto"
-        app:layout_constraintTop_toBottomOf="@id/edTelefonoEmpresa" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvWebEmpresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="216dp"
+            android:layout_marginBottom="423dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintHorizontal_bias="1"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvWeb"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvEmailEmpresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="386dp"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvEmail" />
+
+        <TextView
+            android:id="@+id/tvLocalizacionEmpresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            app:layout_constraintEnd_toStartOf="@+id/edLocalizacionEmpresa"
+            app:layout_constraintStart_toStartOf="@+id/edLocalizacionEmpresa"
+            app:layout_constraintTop_toBottomOf="@+id/edLocalizacionEmpresa"></TextView>
+
+        <ImageView
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="63dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="68dp"
+            android:src="@drawable/ic_baseline_local_phone_24"
+            app:layout_constraintBottom_toTopOf="@+id/btnGuardar"
+            app:layout_constraintEnd_toStartOf="@+id/tvTelefono"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnLocalizacion"></ImageView>
+
+        <TextView
+            android:id="@+id/tvTelefonoEmpresa"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginTop="79dp"
+            android:layout_marginBottom="80dp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnGuardar"
+            app:layout_constraintEnd_toStartOf="@+id/edTelefonoEmpresa"
+            app:layout_constraintStart_toStartOf="@+id/edTelefonoEmpresa"
+            app:layout_constraintTop_toBottomOf="@+id/tvLocalizacionEmpresa"></TextView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,9 +1,12 @@
 package clasePersona;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Persona{
+public class Persona implements Parcelable {
     private int idFoto;
     private String nombre;
     private String apellidos;
@@ -15,6 +18,25 @@ public class Persona{
         this.apellidos = apellidos;
         this.numeroTelefono = numeroTelefono;
     }
+
+    protected Persona(Parcel in) {
+        idFoto = in.readInt();
+        nombre = in.readString();
+        apellidos = in.readString();
+        numeroTelefono = in.readString();
+    }
+
+    public static final Creator<Persona> CREATOR = new Creator<Persona>() {
+        @Override
+        public Persona createFromParcel(Parcel in) {
+            return new Persona(in);
+        }
+
+        @Override
+        public Persona[] newArray(int size) {
+            return new Persona[size];
+        }
+    };
 
     public int getIdFoto() {
         return idFoto;
@@ -46,5 +68,18 @@ public class Persona{
 
     public void setNumeroTelefono(String numeroTelefono) {
         this.numeroTelefono = numeroTelefono;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(idFoto);
+        parcel.writeString(nombre);
+        parcel.writeString(apellidos);
+        parcel.writeString(numeroTelefono);
     }
 }

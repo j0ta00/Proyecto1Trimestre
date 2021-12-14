@@ -1,15 +1,15 @@
 package personasDeContacto;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.os.Build;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -17,13 +17,13 @@ import android.widget.TextView;
 
 import com.example.juanjomz.proyecto1trimestre.R;
 
-import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
 import clasePersona.Persona;
+import detallesPersona.DetallesPersona;
 
-public class PersonasDeContacto extends AppCompatActivity {
+public class PersonasDeContacto extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private List<Persona> empleados;
     private Spinner spinner;
@@ -35,17 +35,32 @@ public class PersonasDeContacto extends AppCompatActivity {
         llenarLista();
         spinner=findViewById(R.id.spnPersonasDeContacto);
         spinner.setAdapter(new spinnerAdapter(this,empleados));
+        spinner.setOnItemSelectedListener(this);
     }
 
 
     private void llenarLista(){
-        empleados=new LinkedList<Persona>();
+        empleados=new LinkedList<>();
         empleados.add(new Persona(R.drawable.juanjo,"Juan José ","Muñoz Arenas", "6634243418"));
         empleados.add(new Persona(R.drawable.antonio,"Antonio ","Lopez Caballero", "6634243418"));
         empleados.add(new Persona(R.drawable.luis,"Luis ","Molinas Martínez", "6634243418"));
         empleados.add(new Persona(R.drawable.maria,"María ","Barroso Núñez", "6634243418"));
 
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent=new Intent(getBaseContext(), DetallesPersona.class);
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra("Persona",empleados.get(i));
+        startActivity(intent);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
     public class spinnerAdapter extends BaseAdapter {
         private List<Persona> empleadosAdapter;
         Context context;

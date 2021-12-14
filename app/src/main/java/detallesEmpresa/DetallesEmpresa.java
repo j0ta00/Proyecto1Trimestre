@@ -1,9 +1,6 @@
 package detallesEmpresa;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
@@ -19,7 +16,6 @@ import android.widget.TextView;
 
 import com.example.juanjomz.proyecto1trimestre.R;
 
-import clasesEmpresa.Empresa;
 import clasesEmpresa.EmpresaTecnologica;
 import personasDeContacto.PersonasDeContacto;
 import viewModels.ViewModelDetalles;
@@ -28,7 +24,7 @@ public class DetallesEmpresa extends AppCompatActivity implements AdapterView.On
     EmpresaTecnologica empresa;
     ViewModelDetalles vmDetalles;
     ImageView logoEmpresa;
-    TextView nombreEmpresa,correoEmpresa,webEmpresa;
+    TextView nombreEmpresa,correoEmpresa,webEmpresa, tvDireccionEmpresa, tvTelefonoDeContacto;
     EditText direccionEmpresa,telefonoDeContacto;
     Button btnPersonasDeContacto,btnGuardar;
     ImageButton btnUbicacion;
@@ -47,6 +43,8 @@ public class DetallesEmpresa extends AppCompatActivity implements AdapterView.On
         btnGuardar=findViewById(R.id.btnGuardar);
         btnUbicacion=findViewById(R.id.btnLocalizacion);
         logoEmpresa=findViewById(R.id.imgLogoEmpresa);
+        tvDireccionEmpresa =findViewById(R.id.tvLocalizacionEmpresa);
+        tvTelefonoDeContacto =findViewById(R.id.tvTelefonoEmpresa);
         vmDetalles.getEmpresa().observe(this,this::onCompanyChangued);
         webEmpresa.setOnClickListener(this);
         inicializarDatosEmpresa();
@@ -64,8 +62,8 @@ public class DetallesEmpresa extends AppCompatActivity implements AdapterView.On
     }
 
     private void onCompanyChangued(EmpresaTecnologica empresa){
-        direccionEmpresa.setText(empresa.getLocalizacion().getNombreLocalizacion());
-        telefonoDeContacto.setText(empresa.getTelefono());
+        tvDireccionEmpresa.setText(empresa.getLocalizacion().getNombreLocalizacion());
+        tvTelefonoDeContacto.setText(empresa.getTelefono());
     }
 
     @Override
