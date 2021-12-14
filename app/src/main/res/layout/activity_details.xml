@@ -19,9 +19,9 @@
             android:id="@+id/imgLogoEmpresa"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginStart="72dp"
             android:layout_marginTop="4dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:flow_horizontalAlign="center"
+            app:layout_constraintStart_toEndOf="@+id/tvNombre"
             app:layout_constraintTop_toTopOf="parent"></ImageView>
 
         <Button
@@ -66,6 +66,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="13dp"
+            android:inputType="text"
+            android:maxLength="50"
+            android:minWidth="60dp"
+            android:maxWidth="200dp"
             android:textSize="15dp"
             app:layout_constraintBaseline_toBaselineOf="@+id/tvLocalizacion"
             app:layout_constraintStart_toEndOf="@+id/tvLocalizacion" />
@@ -74,10 +78,10 @@
             android:id="@+id/tvTelefono"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
             android:text="@string/Telefono"
             app:layout_constraintBaseline_toBaselineOf="@+id/edTelefonoEmpresa"
-            app:layout_constraintEnd_toEndOf="@+id/tvLocalizacionEmpresa" />
+            app:layout_constraintEnd_toEndOf="@+id/tvLocalizacion"
+            app:layout_constraintStart_toStartOf="@+id/tvLocalizacion" />
 
         <ImageButton
             android:id="@+id/btnLocalizacion"
@@ -104,6 +108,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginBottom="13dp"
+            android:inputType="none|number"
+            android:maxWidth="200dp"
+            android:maxLength="9"
+            android:minWidth="60dp"
             android:textSize="15dp"
             app:layout_constraintBottom_toTopOf="@+id/tvTelefonoEmpresa"
             app:layout_constraintStart_toEndOf="@+id/tvTelefono" />
@@ -158,22 +166,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView"
             app:layout_constraintEnd_toStartOf="@+id/edLocalizacionEmpresa"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/edLocalizacionEmpresa"
-            app:layout_constraintTop_toBottomOf="@+id/edLocalizacionEmpresa"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/edLocalizacionEmpresa"
+            app:layout_constraintVertical_bias="0.238"></TextView>
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="33dp"
             android:layout_height="33dp"
-            android:layout_marginStart="66dp"
-            android:layout_marginTop="63dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="68dp"
+            android:layout_marginBottom="64dp"
             android:src="@drawable/ic_baseline_local_phone_24"
             app:layout_constraintBottom_toTopOf="@+id/btnGuardar"
-            app:layout_constraintEnd_toStartOf="@+id/tvTelefono"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnLocalizacion"></ImageView>
+            app:layout_constraintEnd_toEndOf="@+id/btnLocalizacion"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="@+id/btnLocalizacion"></ImageView>
 
         <TextView
             android:id="@+id/tvTelefonoEmpresa"

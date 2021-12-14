@@ -1,31 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="personasDeContacto.PersonasDeContacto">
-
+    android:orientation="vertical"
+    android:paddingLeft="100dp"
+    android:paddingTop="20dp">
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="269dp"
-        android:layout_marginBottom="7dp"
-        android:text="¡Clica en el desplegable!"
-        app:layout_constraintBottom_toTopOf="@+id/spnPersonasDeContacto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        android:layout_marginBottom="10dp"
+        android:text="Selecciona a la persona"></TextView>
 
     <Spinner
         android:id="@+id/spnPersonasDeContacto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:layout_marginBottom="412dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"></Spinner>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginBottom="20dp"></Spinner>
+
+    <ImageView
+        android:id="@+id/imgPersona"
+        android:layout_marginTop="150dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"></ImageView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre: "
+            android:textSize="20dp"></TextView>
+        <TextView
+            android:id="@+id/txtNombrePersona"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apellidos: "
+            android:textSize="20dp"></TextView>
+        <TextView
+            android:id="@+id/txtApellidosPersona"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telefono: "
+            android:textSize="20dp"></TextView>
+        <TextView
+            android:id="@+id/txtTelefonoPersona"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"></TextView>
+    </LinearLayout>
+</LinearLayout>
