@@ -16,12 +16,10 @@ import java.util.List;
 import clasePersona.Persona;
 
 public class PersonasDeContacto extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
     private List<Persona> empleados;
     private Spinner spinner;
     TextView txtNombre,txtApellidos,txtTelefono;
     ImageView img;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +29,21 @@ public class PersonasDeContacto extends AppCompatActivity implements AdapterView
         spinner=findViewById(R.id.spnPersonasDeContacto);
         spinner.setAdapter(new spinnerAdapter(empleados));
         spinner.setOnItemSelectedListener(this);
+        asignarId();
+    }
+    /**
+     * Proposito:Asigna id a los distintos elementos visuales del programa
+     * */
+    private void asignarId(){
         txtNombre=findViewById(R.id.txtNombrePersona);
         txtApellidos=findViewById(R.id.txtApellidosPersona);
         txtTelefono=findViewById(R.id.txtTelefonoPersona);
         img=findViewById(R.id.imgPersona);
     }
 
-
+    /**
+     * Proposito:LLena una lista de personas con objetos persona
+     * */
     private void llenarLista(){
         empleados=new LinkedList<>();
         empleados.add(new Persona(R.drawable.juanjo,"Juan José ","Muñoz Arenas", "6634243418"));
@@ -46,7 +52,10 @@ public class PersonasDeContacto extends AppCompatActivity implements AdapterView
         empleados.add(new Persona(R.drawable.maria,"María ","Barroso Núñez", "6634243418"));
 
     }
-
+    /**
+     * Proposito:Una vez se clique en la persona seleccionada se setearan los textviews que mostrarán los datos de esta
+     * @param adapterView AdapterView<?> , View view, int i, long l
+     * */
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         Persona persona=empleados.get(i);
@@ -55,11 +64,9 @@ public class PersonasDeContacto extends AppCompatActivity implements AdapterView
         txtTelefono.setText(persona.getNumeroTelefono());
         img.setImageResource(persona.getIdFoto());
     }
-
+    /*Método que implementa la interfaz onItemSelected y que no uso*/
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
+    public void onNothingSelected(AdapterView<?> adapterView) {}
 
     public class spinnerAdapter extends BaseAdapter {
         private List<Persona> empleadosAdapter;
@@ -83,7 +90,10 @@ public class PersonasDeContacto extends AppCompatActivity implements AdapterView
         public long getItemId(int i) {
             return 0;
         }
-
+        /**
+         * Proposito:Devuelve la vista que será lo que se mostrará en el spinner
+         * @param i int , View Convertview, ViewGroup parent
+         * */
         @Override
         public View getView(int i, View Convertview, ViewGroup parent) {
             TextView txtNombre,txtApellidos;
@@ -114,11 +124,9 @@ public class PersonasDeContacto extends AppCompatActivity implements AdapterView
             this.txtNombre = txtNombre;
             this.txtApellidos = txtApellidos;
         }
-
         public TextView getTxtNombre() {
             return txtNombre;
         }
-
         public TextView getTxtApellidos() {
             return txtApellidos;
         }
