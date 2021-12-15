@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:overScrollMode="always"
+    android:isScrollContainer="true"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbarStyle="outsideInset">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="100dp"
+    android:paddingLeft="80dp"
     android:paddingTop="20dp">
     <TextView
         android:id="@+id/textView"
@@ -16,11 +24,13 @@
         android:id="@+id/spnPersonasDeContacto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"></Spinner>
+        android:layout_marginBottom="20dp"
+        android:dropDownHeight="50dp"></Spinner>
 
     <ImageView
         android:id="@+id/imgPersona"
         android:layout_marginTop="150dp"
+        android:layout_marginLeft="50dp"
         android:layout_width="150dp"
         android:layout_height="150dp"></ImageView>
     <LinearLayout
@@ -78,3 +88,4 @@
             android:textSize="20dp"></TextView>
     </LinearLayout>
 </LinearLayout>
+</ScrollView>

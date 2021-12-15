@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -73,6 +74,8 @@ public class DetallesEmpresa extends AppCompatActivity implements AdapterView.On
         correoEmpresa.setText(empresa.getEmailDeContacto());
         webEmpresa.setText(empresa.getUrlWebEmpresa());
         logoEmpresa.setImageResource(empresa.getIdLogo());
+        direccionEmpresa.setText(empresa.getLocalizacion().getNombreLocalizacion());
+        telefonoDeContacto.setText(empresa.getTelefono());
     }
     /**
      * Propósito:Método que llamamos en el observador, se encarga de cambiar los datos de los textViews

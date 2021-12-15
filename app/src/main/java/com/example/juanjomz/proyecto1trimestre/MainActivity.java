@@ -56,7 +56,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         listaEmpresas=new LinkedList<>();
         listaEmpresas.add(new EmpresaTecnologica(R.drawable.deloitte_logo,"Deloitte","https://www2.deloitte.com/es/es.html",
                 new Localizacion("C/ Gonzalo Jimenez de Quesada, 2, 41092 Sevilla",Uri.parse("geo:37.39164871013399, -6.010424402772642")),"adminfinanciera@deloitte.es","954 48 93 00"));
+        listaEmpresas.add(new EmpresaTecnologica(R.drawable.everis_logo,"Everis","https://es.nttdata.com",
+                new Localizacion("Edificio Cartuja, C. Américo Vespucio, 5 - 2C, 41092 Sevilla",Uri.parse("geo:37.40205022967053, -6.009378683342517")),"jane.doe@everis.com","954 46 60 63"));
         listaEmpresas.add(new EmpresaNoTecnologica(R.drawable.azvi_logo,"Azvi","F-4212"));
+        listaEmpresas.add(new EmpresaTecnologica(R.drawable.google_logo,"Google","https://about.google/intl/es-419/",
+                new Localizacion("1600 Amphitheatre Pkwy, Mountain View, CA 94043, Estados Unidos",Uri.parse("geo:37.42253282984015, -122.08420975970647")),"press@google.com","800900549"));
+        listaEmpresas.add(new EmpresaNoTecnologica(R.drawable.lidl_logo,"Lidl","4711"));
+        listaEmpresas.add(new EmpresaNoTecnologica(R.drawable.toysrus_logo,"Toysrus","4765"));
     }
     /**
      * Propósito:LLeva a la actividad de detalles de la empresa si se clica en una empresa de tipo tecnológica
